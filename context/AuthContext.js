@@ -19,13 +19,6 @@ export const AuthProvider = ({children}) => {
     formData.append('schoolid', schoolid);
     formData.append('disabled',false);
     formData.append('access_token',null);
-
-    // 'username': username,
-    // 'password': password,
-    // 'schoolid': schoolid,
-    // 'disabled':false,
-    // 'access_token':null
-
     
       try {
         const response = await axios.post(
@@ -47,27 +40,8 @@ export const AuthProvider = ({children}) => {
           AsyncStorage.setItem('userToken', userToken);
           console.log(response.data);
           setIsLoading(false);
-        // const users = response.data; //  response.data is an array of user objects
-        
-        // Check if the username exists in the response data
-      //   const user = users.find(user => user.username === username);
-      //   if (user && user.schoolid === schoolid) {
-      //     //encrypting the enetered password and then checking if it is same
-      //     const passwordMatch = await bcrypt.compare(password, user.hashed_password);
-      //      if(passwordMatch){
-      //         const userToken = user.access_token;
-
-      //          setUserInfo(user)
-      //          setUserToken(userToken);
-      //          console.log("Login Successful");
-      //          AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
-      //          AsyncStorage.setItem('userToken', JSON.stringify(userToken));
-      //          setIsLoading(false);
-      //          console.log(user);
-      //  } 
-      //  else{
-      //   console.log("password incorrect")
-      //  }
+      Loading(false);
+      
       }else {
             console.log("Login Failed");
        }
@@ -90,12 +64,8 @@ export const AuthProvider = ({children}) => {
       setSplashLoading(true);
       setIsLoading(true);
       let userToken = await AsyncStorage.getItem('userToken');
-      // userInfo = JSON.parse(userInfo);
       setUserToken(userToken);
       setIsLoading(false);
-      // if (userInfo) {
-      //   setUserInfo(userInfo);
-      // }
       setSplashLoading(false);
     } catch (e) {
       setSplashLoading(false);
