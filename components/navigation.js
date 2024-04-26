@@ -13,21 +13,7 @@ const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   const {userToken, setUserToken,splashLoading} = useContext(AuthContext);
-  // useEffect(() => {
-  //   // Function to load user token from AsyncStorage on app startup
-  //   const loadUserToken = async () => {
-  //     try {
-  //       const token = await AsyncStorage.getItem('userToken');
-  //       if (token) {
-  //         setUserToken(token);
-  //       }
-  //     } catch (error) {
-  //       console.error('Error loading user token:', error);
-  //     }
-  //   };
-
-  //   loadUserToken(); // Call the function
-  // }, []);
+  
 
   return (
     <NavigationContainer>
