@@ -62,8 +62,6 @@ async def create_access_token(data: dict, expires_delta: Optional[timedelta] = N
 def index():
     return {'Msg': "read from docs"}
 
-# form_data: OAuth2PasswordRequestForm = Depends()):
-#, response_model=Token
 
 @app.post("/login")
 async def login_for_access_token(
@@ -110,46 +108,7 @@ async def create_user(user: userIn_model):
     
     return {"username": created_user.username}
 
-# @app.post("/users/")
-# async def create_user(user: userIn_model):
-#     existing_user = await User.get_or_none(username=user.username)
-#     if existing_user:
-#         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Username already registered")
-#     hashed_password = await get_password_hash(user.password)
-#     user_data = user.dict(exclude_unset=True)
-#     user_data['password'] = hashed_password
-#     user_obj = await User.create(**user_data)
-#     return user_obj
-    # user_obj = await userIn_model.create(**user.dict(exclude_unset=True))
-    # response=await userIn_model.from_tortoise_orm(user_obj)
-   
-    # new_user = await User.create(
-    #     username=user.username,
-    #     password=hashed_password,
-    #     schoolid=user.schoolid,
-    #     disabled=False  
-    # )
-# @app.post("/users/",response_model=user_model)
-# async def create_user(user: userIn_model):
-#     # Check if the username already exists
-#     existing_user = await User.get_or_none(username=user.username)
-#     if existing_user:
-#         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Username already registered")
-#     user_obj = await User.create(**user.dict(exclude_unset=True))
-#     return await userIn_model.from_tortoise_orm(user_obj)
-    # # Hash the password
-    # hashed_password = await get_password_hash(user_data.password)
-
-    # # Create the user object with access_token set to None
-    # new_user = await User.create(
-    #     username=user_data.username,
-    #     password=hashed_password,
-    #     schoolid=user_data.schoolid,
-    #     access_token=None
-    # )
-
-
-    #return {"username": user_data.username}
+  
 
 @app.get("/users/")
 async def get_users():
